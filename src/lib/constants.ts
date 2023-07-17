@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { URL } from 'node:url';
 
-export const rootDir = join(__dirname, '..', '..');
-export const srcDir = join(rootDir, 'src');
+export const rootDir = new URL('../../', import.meta.url);
+export const srcDir = new URL('src/', rootDir);

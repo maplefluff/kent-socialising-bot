@@ -1,5 +1,6 @@
-import './lib/setup';
+import '#lib/setup';
 import { LogLevel, SapphireClient } from '@sapphire/framework';
+import { envParseString } from '@skyra/env-utilities';
 import { GatewayIntentBits } from 'discord.js';
 
 const client = new SapphireClient({
@@ -8,14 +9,21 @@ const client = new SapphireClient({
 	logger: {
 		level: LogLevel.Debug
 	},
-	intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.GuildMessages, GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent],
+	intents: [
+		GatewayIntentBits.GuildModeration,
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.Guilds
+	],
 	loadMessageCommandListeners: true
 });
 
 const main = async () => {
 	try {
 		client.logger.info('Logging in');
-		await client.login();
+		await client.login(envParseString('DISCORD_TOKEN'));
 		client.logger.info('logged in');
 	} catch (error) {
 		client.logger.fatal(error);

@@ -5,6 +5,14 @@
 	"author": "@sapphire",
 	"license": "UNLICENSE",
 	"type": "module",
+	"imports": {
+		"#root/*": [
+			"./dist/*.js"
+		],
+		"#lib/*": [
+			"./dist/lib/*.js"
+		]
+	},
 	"dependencies": {
 		"@sapphire/decorators": "^6.0.1",
 		"@sapphire/discord.js-utilities": "7.0.0",
@@ -45,7 +53,7 @@
 		"watch": "tsc -b src -w",
 		"start": "node dist/index.js",
 		"dev": "npm run build && npm run start",
-		"watch:start": "tsc-watch --onSuccess \"npm run start\"",
+		"watch:start": "tsc-watch -b src --onSuccess \"npm run start\"",
 		"format": "prettier --write \"src/**/*.ts\"",
 		"lint": "eslint src --ext ts --fix"
 	},
