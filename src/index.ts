@@ -17,7 +17,9 @@ const client = new SapphireClient({
 		GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.Guilds
 	],
-	loadMessageCommandListeners: true
+	hmr: {
+		enabled: envParseString('NODE_ENV') !== 'production'
+	}
 });
 
 const main = async () => {
