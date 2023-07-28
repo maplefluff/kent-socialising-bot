@@ -23,5 +23,6 @@ declare module '@skyra/env-utilities' {
 		DISCORD_TOKEN: string;
 		MODLOG_CHANNEL_ID: string;
 		MODLOG_MESSAGES_THREAD_ID: string;
+		MODLOG_MEMBERS_THREAD_ID: string;
 	}
 }

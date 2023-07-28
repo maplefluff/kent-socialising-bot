@@ -16,6 +16,13 @@ export class ModlogUtilities extends Utility {
 
 		return thread as ThreadChannel;
 	}
+
+	public async fetchMembersThread() {
+		const thread = await this.container.client.channels.fetch(envParseString('MODLOG_MEMBERS_THREAD_ID'));
+		if (!thread) throw new Error('Unable to fetch members thread');
+
+		return thread as ThreadChannel;
+	}
 }
 
 declare module '@sapphire/plugin-utilities-store' {
