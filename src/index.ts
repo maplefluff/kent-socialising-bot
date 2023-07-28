@@ -4,7 +4,7 @@ import { envParseString } from '@skyra/env-utilities';
 import { GatewayIntentBits } from 'discord.js';
 
 const client = new SapphireClient({
-	defaultPrefix: '!',
+	defaultPrefix: '>.',
 	caseInsensitiveCommands: true,
 	logger: {
 		level: LogLevel.Debug
@@ -19,7 +19,8 @@ const client = new SapphireClient({
 	],
 	hmr: {
 		enabled: envParseString('NODE_ENV') !== 'production'
-	}
+	},
+	loadMessageCommandListeners: true
 });
 
 const main = async () => {
