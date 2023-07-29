@@ -25,7 +25,23 @@ export class GuildTimeoutAddListener extends Listener {
 				moderator = auditLogEvent.entries.first()?.executor;
 			}
 
-			const didSendUserDm = await this.handleUserDm(member, reason);
+			const didSendUserDm = await this.container.utilities.modlogUtilities.sendDmToUser(
+				member.id,
+				new EmbedBuilder()
+					.setAuthor({
+						name: member.guild.name,
+						iconURL: member.guild.iconURL() ?? undefined
+					})
+					.setDescription(
+						`You have been timed out in ${member.guild.name}\nThis will be removed <t:${Math.floor(
+							member.communicationDisabledUntilTimestamp! / 1000
+						)}:R>`
+					)
+					.addFields({
+						name: 'Reason',
+						value: reason ?? 'No reason provided'
+					})
+			);
 
 			return threadChannel.send({
 				embeds: [
@@ -55,33 +71,6 @@ export class GuildTimeoutAddListener extends Listener {
 			});
 		} catch (error) {
 			return this.container.logger.error(error);
-		}
-	}
-
-	private async handleUserDm(member: GuildMember, reason: string | null) {
-		try {
-			await member.send({
-				embeds: [
-					new EmbedBuilder()
-						.setAuthor({
-							name: member.guild.name,
-							iconURL: member.guild.iconURL() ?? undefined
-						})
-						.setDescription(
-							`You have been timed out in ${member.guild.name}\nThis will be removed <t:${Math.floor(
-								member.communicationDisabledUntilTimestamp! / 1000
-							)}:R>`
-						)
-						.addFields({
-							name: 'Reason',
-							value: reason ?? 'No reason provided'
-						})
-				]
-			});
-
-			return true;
-		} catch (error) {
-			return false;
 		}
 	}
 }
