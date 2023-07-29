@@ -21,6 +21,7 @@ colorette.createColors({ useColor: true });
 declare module '@skyra/env-utilities' {
 	interface Env {
 		DISCORD_TOKEN: string;
+		GUILD_ID: string;
 		MODLOG_CHANNEL_ID: string;
 		MODLOG_MESSAGES_THREAD_ID: string;
 		MODLOG_MEMBERS_THREAD_ID: string;
