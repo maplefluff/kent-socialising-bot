@@ -24,6 +24,20 @@ export class ModlogUtilities extends Utility {
 		return thread as ThreadChannel;
 	}
 
+	public async fetchRolesThread() {
+		const thread = await this.container.client.channels.fetch(envParseString('MODLOG_ROLES_THREAD_ID'));
+		if (!thread) throw new Error('Unable to fetch roles thread');
+
+		return thread as ThreadChannel;
+	}
+
+	public async fetchChannelsThread() {
+		const thread = await this.container.client.channels.fetch(envParseString('MODLOG_CHANNELS_THREAD_ID'));
+		if (!thread) throw new Error('Unable to fetch channels thread');
+
+		return thread as ThreadChannel;
+	}
+
 	public async sendDmToUser(userId: string, data: EmbedBuilder) {
 		try {
 			const user = await this.container.client.users.fetch(userId);

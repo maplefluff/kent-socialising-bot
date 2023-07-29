@@ -26,6 +26,8 @@ declare module '@skyra/env-utilities' {
 		MODLOG_CHANNEL_ID: string;
 		MODLOG_MESSAGES_THREAD_ID: string;
 		MODLOG_MEMBERS_THREAD_ID: string;
+		MODLOG_ROLES_THREAD_ID: string;
+		MODLOG_CHANNELS_THREAD_ID: string;
 	}
 }
 
