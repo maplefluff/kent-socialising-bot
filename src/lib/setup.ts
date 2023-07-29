@@ -8,6 +8,7 @@ import { srcDir } from '#lib/constants';
 import '@sapphire/plugin-utilities-store/register';
 import '@sapphire/plugin-logger/register';
 import '@sapphire/plugin-hmr/register';
+import type { PrismaClient } from '@prisma/client';
 
 // Set default behavior to bulk overwrite
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(RegisterBehavior.BulkOverwrite);
@@ -25,5 +26,11 @@ declare module '@skyra/env-utilities' {
 		MODLOG_CHANNEL_ID: string;
 		MODLOG_MESSAGES_THREAD_ID: string;
 		MODLOG_MEMBERS_THREAD_ID: string;
+	}
+}
+
+declare module '@sapphire/pieces' {
+	interface Container {
+		prisma: PrismaClient;
 	}
 }
