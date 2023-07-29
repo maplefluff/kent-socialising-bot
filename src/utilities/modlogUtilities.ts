@@ -1,6 +1,6 @@
 import { Utility } from '@sapphire/plugin-utilities-store';
 import { envParseString } from '@skyra/env-utilities';
-import type { ThreadChannel } from 'discord.js';
+import type { EmbedBuilder, ThreadChannel } from 'discord.js';
 
 export class ModlogUtilities extends Utility {
 	public constructor(context: Utility.Context, options: Utility.Options) {
@@ -22,6 +22,18 @@ export class ModlogUtilities extends Utility {
 		if (!thread) throw new Error('Unable to fetch members thread');
 
 		return thread as ThreadChannel;
+	}
+
+	public async sendDmToUser(userId: string, data: EmbedBuilder) {
+		try {
+			const user = await this.container.client.users.fetch(userId);
+
+			await user.send({ embeds: [data] });
+
+			return true;
+		} catch (error) {
+			return false;
+		}
 	}
 }
 
