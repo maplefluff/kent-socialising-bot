@@ -4,8 +4,7 @@ This here is the moderation bot for the discord server `Kent socialising for ove
 
 ## Main features
 
--   modlogs
--   informs us to changes within the server
+-   modlogs to inform us of changes within the server
 -   DMs a user when they have a timeout placed on them (discord, why- dont you do this natively???). It will also do the same for bans and kicks
 -   a warning system (lets us warn users and see whos been warned and why. This also lets users view all of their own warnings if they have any)
 
