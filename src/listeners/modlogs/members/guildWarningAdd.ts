@@ -8,7 +8,7 @@ import { EmbedBuilder, User } from 'discord.js';
 export class GuildWarnAddListener extends Listener {
 	public async run(moderator: User, userId: string, data: { reason: string | null; didSendDm: boolean }) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMembersThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
 			const warnedUser = await this.container.client.users.fetch(userId);
 

@@ -46,7 +46,7 @@ export class GuildMemberRemoveListener extends Listener {
 	}
 
 	private async handleLeave(member: GuildMember) {
-		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMembersThread();
+		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
 		return threadChannel.send({
 			embeds: [
@@ -75,7 +75,7 @@ export class GuildMemberRemoveListener extends Listener {
 	}
 
 	private async handleKick(member: GuildMember, data: GuildAuditLogsEntry) {
-		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMembersThread();
+		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
 		console.log(data);
 
@@ -111,7 +111,7 @@ export class GuildMemberRemoveListener extends Listener {
 	}
 
 	private async handleBan(member: GuildMember, data: GuildAuditLogsEntry) {
-		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMembersThread();
+		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
 		console.log(data);
 

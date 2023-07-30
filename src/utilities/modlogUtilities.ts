@@ -10,29 +10,8 @@ export class ModlogUtilities extends Utility {
 		});
 	}
 
-	public async fetchMessagesThread() {
-		const thread = await this.container.client.channels.fetch(envParseString('MODLOG_MESSAGES_THREAD_ID'));
-		if (!thread) throw new Error('Unable to fetch messages thread');
-
-		return thread as ThreadChannel;
-	}
-
-	public async fetchMembersThread() {
-		const thread = await this.container.client.channels.fetch(envParseString('MODLOG_MEMBERS_THREAD_ID'));
-		if (!thread) throw new Error('Unable to fetch members thread');
-
-		return thread as ThreadChannel;
-	}
-
-	public async fetchRolesThread() {
-		const thread = await this.container.client.channels.fetch(envParseString('MODLOG_ROLES_THREAD_ID'));
-		if (!thread) throw new Error('Unable to fetch roles thread');
-
-		return thread as ThreadChannel;
-	}
-
-	public async fetchChannelsThread() {
-		const thread = await this.container.client.channels.fetch(envParseString('MODLOG_CHANNELS_THREAD_ID'));
+	public async fetchThreadChannel(type: 'MESSAGES' | 'MEMBERS' | 'ROLES' | 'CHANNELS') {
+		const thread = await this.container.client.channels.fetch(envParseString(`MODLOG_${type}_THREAD_ID`));
 		if (!thread) throw new Error('Unable to fetch channels thread');
 
 		return thread as ThreadChannel;

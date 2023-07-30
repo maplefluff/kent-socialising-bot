@@ -11,7 +11,7 @@ export class MessageUpdateListener extends Listener {
 		if (newMessage.author.bot || newMessage.author.id === this.container.client.user?.id || newMessage.author.system) return;
 
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMessagesThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MESSAGES');
 
 			const editedMessageEmbed = new EmbedBuilder()
 				.setAuthor({

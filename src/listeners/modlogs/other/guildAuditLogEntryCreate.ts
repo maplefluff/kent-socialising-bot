@@ -29,7 +29,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 	private async handleRoleCreate(entry: GuildAuditLogsEntry) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchRolesThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('ROLES');
 
 			const moderator = await this.container.client.users.fetch(entry.executorId!);
 
@@ -56,7 +56,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 	private async handleRoleDelete(entry: GuildAuditLogsEntry) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchRolesThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('ROLES');
 
 			const moderator = await this.container.client.users.fetch(entry.executorId!);
 
@@ -81,7 +81,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 	private async handleRoleUpdate(entry: GuildAuditLogsEntry) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchRolesThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('ROLES');
 
 			const moderator = await this.container.client.users.fetch(entry.executorId!);
 
@@ -109,7 +109,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 	// channels - yeah... this is pretty much the same code as the above lmfaoo
 	private async handleChannelCreate(entry: GuildAuditLogsEntry) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchChannelsThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('CHANNELS');
 
 			const moderator = await this.container.client.users.fetch(entry.executorId!);
 
@@ -136,7 +136,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 	private async handleChannelUpdate(entry: GuildAuditLogsEntry) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchChannelsThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('CHANNELS');
 
 			const moderator = await this.container.client.users.fetch(entry.executorId!);
 
@@ -163,7 +163,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 	private async handleChannelDelete(entry: GuildAuditLogsEntry) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchChannelsThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('CHANNELS');
 
 			const moderator = await this.container.client.users.fetch(entry.executorId!);
 

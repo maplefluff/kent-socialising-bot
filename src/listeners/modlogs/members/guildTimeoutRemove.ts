@@ -8,7 +8,7 @@ import { EmbedBuilder, type GuildMember } from 'discord.js';
 export class GuildTimeoutRemoveListener extends Listener {
 	public async run(member: GuildMember) {
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMembersThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
 			return threadChannel.send({
 				embeds: [

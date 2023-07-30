@@ -10,7 +10,7 @@ export class GuildTimeoutAddListener extends Listener {
 	public async run(member: GuildMember) {
 		await sleep(5000);
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMembersThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
 			const auditLogEvent = await member.guild.fetchAuditLogs({
 				type: AuditLogEvent.MemberUpdate,

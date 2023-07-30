@@ -10,7 +10,7 @@ export class GuildMemberAddListener extends Listener {
 		if (member.user.bot) return;
 
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMembersThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
 			return threadChannel.send({
 				embeds: [

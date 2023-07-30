@@ -11,7 +11,7 @@ export class MessageDeleteListener extends Listener {
 		if (message.author.bot || message.author.id === this.container.client.user?.id || message.author.system) return;
 
 		try {
-			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchMessagesThread();
+			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MESSAGES');
 
 			const deletedMessageEmbed = new EmbedBuilder()
 				.setAuthor({
