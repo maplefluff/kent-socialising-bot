@@ -49,7 +49,7 @@ export class WarningsSubcommand extends Subcommand {
 		const idToMatch = interaction.options.getInteger('warning_id');
 
 		const guildWarnings = await this.container.prisma.warning.findMany({
-			where: isNullishOrEmpty(idToMatch) ? {} : { id: parseInt(idToMatch.toString()) },
+			where: isNullishOrEmpty(idToMatch) ? {} : { id: parseInt(idToMatch.toString(), 10) },
 			// for- whatever reason, it doesnt want to accept idToMatch directly and claims it's a string
 			// so take this whacky workaround
 			orderBy: { id: 'desc' },
