@@ -47,7 +47,8 @@ export class ModalHandler extends InteractionHandler {
 				ephemeral: true
 			});
 		} catch (error) {
-			return this.container.logger.error(error);
+			this.container.logger.error(error);
+			return interaction.reply({ content: 'An error occurred while warning the user', ephemeral: true });
 		}
 	}
 }
