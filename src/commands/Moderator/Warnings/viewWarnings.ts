@@ -8,7 +8,7 @@ import { EmbedBuilder, PermissionFlagsBits, User } from 'discord.js';
 	name: 'view_warnings',
 	description: 'View warnings for you or another user'
 })
-export class UserCommand extends Command {
+export class ViewWarningsCommand extends Command {
 	public override registerApplicationCommands(registry: Command.Registry) {
 		registry.registerChatInputCommand((builder) =>
 			builder //
