@@ -35,7 +35,7 @@ export class ModalHandler extends InteractionHandler {
 
 			await this.container.client.guilds.cache
 				.get(envParseString('GUILD_ID'))
-				?.members.ban(userId, { reason: `${reason} - Banned by (${interaction.user.tag})` ?? 'No reason provided' });
+				?.members.ban(userId, { reason: `${reason} - Banned by (${interaction.user.username})` ?? 'No reason provided' });
 
 			return interaction.reply({
 				content: `Successfully banned <@${userId}>. ${didSendDm ? 'They were also sent a DM' : 'I could not send them a DM'}`,

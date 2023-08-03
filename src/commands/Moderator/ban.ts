@@ -100,7 +100,10 @@ export class BanCommand extends Command {
 			.setMaxLength(512)
 			.setStyle(TextInputStyle.Paragraph);
 		const textInputRow = new ActionRowBuilder<TextInputBuilder>().addComponents(reasonTextInput);
-		const reasonModal = new ModalBuilder().setTitle(`Ban ${member.user.tag}`).addComponents(textInputRow).setCustomId(`ban.modal.${member.id}`);
+		const reasonModal = new ModalBuilder()
+			.setTitle(`Ban ${member.user.username}`)
+			.addComponents(textInputRow)
+			.setCustomId(`ban.modal.${member.id}`);
 
 		return interaction.showModal(reasonModal);
 	}

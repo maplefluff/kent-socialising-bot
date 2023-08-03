@@ -15,7 +15,7 @@ export class MessageUpdateListener extends Listener {
 
 			const editedMessageEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: newMessage.author.tag.split('#')[0],
+					name: newMessage.author.username,
 					iconURL: newMessage.author.displayAvatarURL()
 				})
 				.setTitle(`Message edited from ${newMessage.url}`)

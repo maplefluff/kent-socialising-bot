@@ -16,7 +16,7 @@ export class GuildMemberAddListener extends Listener {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({
-							name: member.user.tag.split('#')[0],
+							name: member.user.username,
 							iconURL: member.displayAvatarURL()
 						})
 						.setTitle(`Member joined`)

@@ -16,10 +16,10 @@ export class GuildWarnRemoveListener extends Listener {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({
-							name: warnedUser.tag.split('#')[0],
+							name: warnedUser.username,
 							iconURL: warnedUser.displayAvatarURL()
 						})
-						.setTitle(`Member warning removed by ${moderator.tag.split('#')[0]}`)
+						.setTitle(`Member warning removed by ${moderator.username}`)
 						.addFields(
 							{
 								name: 'Warning data',

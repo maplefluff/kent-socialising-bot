@@ -14,7 +14,7 @@ export class GuildTimeoutRemoveListener extends Listener {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({
-							name: member.user.tag.split('#')[0],
+							name: member.user.username,
 							iconURL: member.user.displayAvatarURL()
 						})
 						.setTitle(`Timeout expired or removed`)

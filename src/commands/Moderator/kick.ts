@@ -99,7 +99,10 @@ export class KickCommand extends Command {
 			.setMaxLength(512)
 			.setStyle(TextInputStyle.Paragraph);
 		const textInputRow = new ActionRowBuilder<TextInputBuilder>().addComponents(reasonTextInput);
-		const reasonModal = new ModalBuilder().setTitle(`Kick ${member.user.tag}`).addComponents(textInputRow).setCustomId(`kick.modal.${member.id}`);
+		const reasonModal = new ModalBuilder()
+			.setTitle(`Kick ${member.user.username}`)
+			.addComponents(textInputRow)
+			.setCustomId(`kick.modal.${member.id}`);
 
 		return interaction.showModal(reasonModal);
 	}

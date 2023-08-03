@@ -47,10 +47,10 @@ export class GuildTimeoutAddListener extends Listener {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({
-							name: member.user.tag.split('#')[0],
+							name: member.user.username,
 							iconURL: member.user.displayAvatarURL()
 						})
-						.setTitle(`Timeout added by ${moderator?.tag.split('#')[0] ?? 'Unknown'}`)
+						.setTitle(`Timeout added by ${moderator?.username ?? 'Unknown'}`)
 						.addFields(
 							{
 								name: 'Reason',

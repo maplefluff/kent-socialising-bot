@@ -15,7 +15,7 @@ export class MessageDeleteListener extends Listener {
 
 			const deletedMessageEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: message.author.tag.split('#')[0],
+					name: message.author.username,
 					iconURL: message.author.displayAvatarURL()
 				})
 				.setTitle(`Message Deleted from <#${message.channel.id}>`)

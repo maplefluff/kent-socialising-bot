@@ -123,10 +123,10 @@ export class WarningsSubcommand extends Subcommand {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({
-							name: member.user.tag.split('#')[0],
+							name: member.user.username,
 							iconURL: member.user.displayAvatarURL()
 						})
-						.setTitle(`Warnings cleared by ${interaction.user.tag.split('#')[0]}`)
+						.setTitle(`Warnings cleared by ${interaction.user.username}`)
 						.addFields({
 							name: 'DM status',
 							value: didSendDm ? 'Sent' : 'Unable to send'

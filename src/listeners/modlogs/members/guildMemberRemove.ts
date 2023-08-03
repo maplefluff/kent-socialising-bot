@@ -52,7 +52,7 @@ export class GuildMemberRemoveListener extends Listener {
 			embeds: [
 				new EmbedBuilder()
 					.setAuthor({
-						name: member.user.tag.split('#')[0],
+						name: member.user.username,
 						iconURL: member.displayAvatarURL()
 					})
 					.setTitle(`Member left`)
@@ -81,10 +81,10 @@ export class GuildMemberRemoveListener extends Listener {
 
 		const memberKickEmbed = new EmbedBuilder()
 			.setAuthor({
-				name: member.user.tag.split('#')[0],
+				name: member.user.username,
 				iconURL: member.displayAvatarURL()
 			})
-			.setTitle(`Member kicked by ${data.executor?.tag.split('#')[0] || 'Unknown moderator'}`)
+			.setTitle(`Member kicked by ${data.executor?.username || 'Unknown moderator'}`)
 			.addFields(
 				{
 					name: 'Account Created',
@@ -117,10 +117,10 @@ export class GuildMemberRemoveListener extends Listener {
 
 		const memberBanEmbed = new EmbedBuilder()
 			.setAuthor({
-				name: member.user.tag.split('#')[0],
+				name: member.user.username,
 				iconURL: member.displayAvatarURL()
 			})
-			.setTitle(`Member banned by ${data.executor?.tag.split('#')[0] || 'Unknown moderator'}`)
+			.setTitle(`Member banned by ${data.executor?.username || 'Unknown moderator'}`)
 			.addFields(
 				{
 					name: 'Account Created',

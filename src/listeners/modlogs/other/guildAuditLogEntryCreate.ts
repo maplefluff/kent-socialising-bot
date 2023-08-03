@@ -35,7 +35,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 			const roleCreatedEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: moderator.tag.split('#')[0] || 'Unknwon User',
+					name: moderator.username || 'Unknwon User',
 					iconURL: moderator.displayAvatarURL() || undefined
 				})
 				.setTitle(`Role created`)
@@ -62,7 +62,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 			const roleDeletedEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: moderator.tag.split('#')[0] || 'Unknwon User',
+					name: moderator.username || 'Unknwon User',
 					iconURL: moderator.displayAvatarURL() || undefined
 				})
 				.setTitle(`Role deleted`)
@@ -87,7 +87,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 			const roleUpdatedEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: moderator.tag.split('#')[0] || 'Unknwon User',
+					name: moderator.username || 'Unknwon User',
 					iconURL: moderator.displayAvatarURL() || undefined
 				})
 				.setTitle(`Role updated`)
@@ -115,7 +115,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 			const channelCreatedEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: moderator.tag.split('#')[0] || 'Unknwon User',
+					name: moderator.username || 'Unknwon User',
 					iconURL: moderator.displayAvatarURL() || undefined
 				})
 				.setTitle(`Channel created`)
@@ -142,7 +142,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 			const channelUpdatedEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: moderator.tag.split('#')[0] || 'Unknwon User',
+					name: moderator.username || 'Unknwon User',
 					iconURL: moderator.displayAvatarURL() || undefined
 				})
 				.setTitle(`Channel updated`)
@@ -169,7 +169,7 @@ export class GuildAuditLogEntryCreateListener extends Listener {
 
 			const channelDeletedEmbed = new EmbedBuilder()
 				.setAuthor({
-					name: moderator.tag.split('#')[0] || 'Unknwon User',
+					name: moderator.username || 'Unknwon User',
 					iconURL: moderator.displayAvatarURL() || undefined
 				})
 				.setTitle(`Channel deleted`)

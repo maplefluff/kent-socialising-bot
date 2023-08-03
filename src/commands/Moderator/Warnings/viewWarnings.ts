@@ -69,7 +69,7 @@ export class ViewWarningsCommand extends Command {
 	private sendWarnings(user: User, warnings: Warning[], interaction: Command.ChatInputCommandInteraction, userIsModerator: boolean = false) {
 		const warningsEmbed = new EmbedBuilder()
 			.setAuthor({
-				name: user.tag.split('#')[0],
+				name: user.username,
 				iconURL: user.displayAvatarURL()
 			})
 			.setTitle('User Warnings');

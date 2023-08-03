@@ -16,10 +16,10 @@ export class GuildWarnAddListener extends Listener {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({
-							name: warnedUser.tag.split('#')[0],
+							name: warnedUser.username,
 							iconURL: warnedUser.displayAvatarURL()
 						})
-						.setTitle(`Member warned by ${moderator.tag.split('#')[0]}`)
+						.setTitle(`Member warned by ${moderator.username}`)
 						.addFields(
 							{
 								name: 'Reason',
