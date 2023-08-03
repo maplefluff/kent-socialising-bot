@@ -34,7 +34,7 @@ const main = async () => {
 		client.logger.info('logged in');
 	} catch (error) {
 		client.logger.fatal(error);
-		client.destroy();
+		await client.destroy();
 		process.exit(1);
 	}
 };
