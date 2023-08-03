@@ -50,7 +50,7 @@ export class ViewWarningsCommand extends Command {
 			// if there is no member returned, then we just want to return an error
 
 			const warnings = await this.fetchWarnings(BigInt(requestedUser.id));
-			return this.sendWarnings(requestedUser, warnings, interaction);
+			return this.sendWarnings(requestedUser, warnings, interaction, true);
 		} catch (error) {
 			this.container.logger.error(error);
 			return interaction.reply({ content: 'An error occurred while fetching warnings', ephemeral: true });
@@ -66,7 +66,7 @@ export class ViewWarningsCommand extends Command {
 		});
 	}
 
-	private sendWarnings(user: User, warnings: Warning[], interaction: Command.ChatInputCommandInteraction) {
+	private sendWarnings(user: User, warnings: Warning[], interaction: Command.ChatInputCommandInteraction, userIsModerator: boolean = false) {
 		const warningsEmbed = new EmbedBuilder()
 			.setAuthor({
 				name: user.tag.split('#')[0],
@@ -79,7 +79,9 @@ export class ViewWarningsCommand extends Command {
 			: warningsEmbed.addFields(
 					warnings.map((warning, index) => ({
 						name: `Warning #${index}`,
-						value: `**Reason:** \n${warning.reason}\n\nModerator: <@${warning.moderatorId}>`
+						value: `**Reason:** \n${warning.reason}\n\n**Moderator:** <@${warning.moderatorId}> ${
+							userIsModerator ? `\n**Warning ID:** ${warning.id}` : ''
+						}`
 					}))
 			  );
 
