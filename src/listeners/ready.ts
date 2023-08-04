@@ -14,7 +14,7 @@ export class UserEvent extends Listener {
 		this.printBanner();
 		this.printStoreDebugInformation();
 
-		setInterval(() => this.banRemover().catch((err) => this.container.logger.error(err)), Time.Second * 5);
+		setInterval(() => this.banRemover().catch((err) => this.container.logger.error(err)), Time.Minute * 5);
 		// I'm aware that i could just put the Interval value myself, but since im using this package elsewhere, i may aswell do this to make it easier to read
 	}
 
