@@ -18,3 +18,9 @@ model Warning {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Ban {
+  id        Int      @id @default(autoincrement())
+  userId    BigInt
+  expiresAt DateTime
+}

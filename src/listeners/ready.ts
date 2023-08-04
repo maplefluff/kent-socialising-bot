@@ -1,6 +1,8 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Listener, Store } from '@sapphire/framework';
+import { envParseString } from '@skyra/env-utilities';
 import { blue, gray, green, magenta, magentaBright, white, yellow } from 'colorette';
+import { Time } from '@sapphire/duration';
 
 const dev = process.env.NODE_ENV !== 'production';
 
@@ -11,6 +13,9 @@ export class UserEvent extends Listener {
 	public run() {
 		this.printBanner();
 		this.printStoreDebugInformation();
+
+		setInterval(() => this.banRemover().catch((err) => this.container.logger.error(err)), Time.Second * 5);
+		// I'm aware that i could just put the Interval value myself, but since im using this package elsewhere, i may aswell do this to make it easier to read
 	}
 
 	private printBanner() {
@@ -46,5 +51,31 @@ ${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MO
 
 	private styleStore(store: Store<any>, last: boolean) {
 		return gray(`${last ? '└─' : '├─'} Loaded ${this.style(store.size.toString().padEnd(3, ' '))} ${store.name}.`);
+	}
+
+	private async banRemover() {
+		const guildData = this.container.client.guilds.cache.get(envParseString('GUILD_ID'));
+		if (!guildData) return this.container.logger.error('Failed to fetch guild');
+
+		const bans = await this.container.prisma.ban.findMany({
+			where: {
+				expiresAt: {
+					lte: new Date()
+				}
+			}
+		});
+
+		for (const ban of bans) {
+			console.log(ban);
+			setTimeout(async () => {
+				await this.container.prisma.ban.delete({
+					where: {
+						id: ban.id
+					}
+				});
+
+				await guildData.members.unban(String(ban.userId), 'Ban timer expired');
+			}, Time.Second * 5);
+		}
 	}
 }

@@ -2857,6 +2857,7 @@ __metadata:
     "@sapphire/cli": ^1.6.1
     "@sapphire/decorators": ^6.0.2
     "@sapphire/discord.js-utilities": 7.0.1
+    "@sapphire/duration": ^1.1.0
     "@sapphire/eslint-config": ^5.0.0
     "@sapphire/eslint-plugin-result": ^2.0.0
     "@sapphire/framework": ^4.5.1

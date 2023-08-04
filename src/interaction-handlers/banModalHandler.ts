@@ -1,4 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators';
+import { Duration } from '@sapphire/duration';
 import { InteractionHandler, InteractionHandlerTypes } from '@sapphire/framework';
 import { envParseString } from '@skyra/env-utilities';
 import { EmbedBuilder, type ModalSubmitInteraction } from 'discord.js';
@@ -18,20 +19,34 @@ export class ModalHandler extends InteractionHandler {
 	public async run(interaction: ModalSubmitInteraction, userId: string) {
 		try {
 			const reason = interaction.fields.getTextInputValue('ban.reasonInput');
+			const timeLength = new Duration(interaction.fields.getTextInputValue('ban.lengthInput')).fromNow;
 
-			const didSendDm = await this.container.client.utilities.modlogUtilities.sendDmToUser(
-				userId,
-				new EmbedBuilder()
-					.setAuthor({
-						name: interaction.guild?.name || 'Kent socialising',
-						iconURL: interaction.guild?.iconURL() || undefined
-					})
-					.setDescription('You were banned from the server')
-					.addFields({
-						name: 'Reason',
-						value: reason ?? 'No reason provided'
-					})
-			);
+			const emebedToSendToUser = new EmbedBuilder()
+				.setAuthor({
+					name: interaction.guild?.name || 'Kent socialising',
+					iconURL: interaction.guild?.iconURL() || undefined
+				})
+				.setDescription('You were banned from the server')
+				.addFields({
+					name: 'Reason',
+					value: reason ?? 'No reason provided'
+				});
+
+			if (timeLength) {
+				await this.container.prisma.ban.create({
+					data: {
+						userId: BigInt(userId),
+						expiresAt: timeLength
+					}
+				});
+
+				emebedToSendToUser.addFields({
+					name: 'Expires',
+					value: Date.parse(timeLength.toString()).toString()
+				});
+			}
+
+			const didSendDm = await this.container.client.utilities.modlogUtilities.sendDmToUser(userId, emebedToSendToUser);
 
 			await this.container.client.guilds.cache
 				.get(envParseString('GUILD_ID'))
