@@ -10,6 +10,10 @@ export class MessageUpdateListener extends Listener {
 	public async run(oldMessage: Message, newMessage: Message) {
 		if (newMessage.author.bot || newMessage.author.id === this.container.client.user?.id || newMessage.author.system) return;
 
+		// check to see if an embed was added to user message, since for some reason it fires this event for that lmaoo
+		if (oldMessage.content === newMessage.content) return;
+		if (!oldMessage.embeds && newMessage.embeds.length > 0) return;
+
 		try {
 			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MESSAGES');
 
