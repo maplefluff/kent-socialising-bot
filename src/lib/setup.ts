@@ -2,7 +2,7 @@
 process.env.NODE_ENV ??= 'development';
 
 import { ApplicationCommandRegistries, RegisterBehavior } from '@sapphire/framework';
-import { setup } from '@skyra/env-utilities';
+import { setup, type ArrayString } from '@skyra/env-utilities';
 import * as colorette from 'colorette';
 import { srcDir } from '#lib/constants';
 import '@sapphire/plugin-utilities-store/register';
@@ -28,6 +28,7 @@ declare module '@skyra/env-utilities' {
 		MODLOG_MEMBERS_THREAD_ID: string;
 		MODLOG_ROLES_THREAD_ID: string;
 		MODLOG_CHANNELS_THREAD_ID: string;
+		IGNORED_USER_IDS: ArrayString;
 	}
 }
 

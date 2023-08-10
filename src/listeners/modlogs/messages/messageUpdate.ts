@@ -1,6 +1,7 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, type ListenerOptions } from '@sapphire/framework';
 import { codeBlock } from '@sapphire/utilities';
+import { envParseArray } from '@skyra/env-utilities';
 import { EmbedBuilder, type Message } from 'discord.js';
 
 @ApplyOptions<ListenerOptions>({
@@ -13,6 +14,9 @@ export class MessageUpdateListener extends Listener {
 		// check to see if an embed was added to user message, since for some reason it fires this event for that lmaoo
 		if (oldMessage.content === newMessage.content) return;
 		if (!oldMessage.embeds && newMessage.embeds.length > 0) return;
+
+		// ignore certain ppl who like to flood logs *stares at psyber*
+		if (envParseArray('IGNORED_USER_IDS').includes(newMessage.author.id)) return;
 
 		try {
 			const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MESSAGES');
