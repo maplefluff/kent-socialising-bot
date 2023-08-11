@@ -15,6 +15,7 @@ export class ModalHandler extends InteractionHandler {
 	}
 
 	public async run(interaction: ModalSubmitInteraction, userId: string) {
+		await interaction.deferReply({ ephemeral: true });
 		try {
 			const reason = interaction.fields.getTextInputValue('warn.reasonInput');
 
@@ -42,13 +43,12 @@ export class ModalHandler extends InteractionHandler {
 
 			this.container.client.emit('guildWarnAdd', interaction.user, userId, { reason, didSendDm });
 
-			return interaction.reply({
-				content: `Successfully warned <@${userId}>`,
-				ephemeral: true
+			return interaction.editReply({
+				content: `Successfully warned <@${userId}>`
 			});
 		} catch (error) {
 			this.container.logger.error(error);
-			return interaction.reply({ content: 'An error occurred while warning the user', ephemeral: true });
+			return interaction.editReply({ content: 'An error occurred while warning the user' });
 		}
 	}
 }

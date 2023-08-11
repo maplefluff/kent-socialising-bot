@@ -16,6 +16,7 @@ export class ModalHandler extends InteractionHandler {
 	}
 
 	public async run(interaction: ModalSubmitInteraction, userId: string) {
+		await interaction.deferReply({ ephemeral: true });
 		try {
 			const reason = interaction.fields.getTextInputValue('kick.reasonInput');
 
@@ -35,13 +36,12 @@ export class ModalHandler extends InteractionHandler {
 
 			await this.container.client.guilds.cache.get(envParseString('GUILD_ID'))?.members.kick(userId, reason ?? undefined);
 
-			return interaction.reply({
-				content: `Successfully kicked <@${userId}>. ${didSendDm ? 'They were also sent a DM' : 'I could not send them a DM'}`,
-				ephemeral: true
+			return interaction.editReply({
+				content: `Successfully kicked <@${userId}>. ${didSendDm ? 'They were also sent a DM' : 'I could not send them a DM'}`
 			});
 		} catch (error) {
 			this.container.logger.error(error);
-			return interaction.reply({ content: 'An error occurred while kicking the user, please kick them yourself', ephemeral: true });
+			return interaction.editReply({ content: 'An error occurred while kicking the user, please kick them yourself' });
 		}
 	}
 }

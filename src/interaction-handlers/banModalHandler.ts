@@ -17,6 +17,7 @@ export class ModalHandler extends InteractionHandler {
 	}
 
 	public async run(interaction: ModalSubmitInteraction, userId: string) {
+		await interaction.deferReply({ ephemeral: true });
 		try {
 			const reason = interaction.fields.getTextInputValue('ban.reasonInput');
 			const timeLength = new Duration(interaction.fields.getTextInputValue('ban.lengthInput')).fromNow;
@@ -52,13 +53,12 @@ export class ModalHandler extends InteractionHandler {
 				.get(envParseString('GUILD_ID'))
 				?.members.ban(userId, { reason: `${reason} - Banned by (${interaction.user.username})` ?? 'No reason provided' });
 
-			return interaction.reply({
-				content: `Successfully banned <@${userId}>. ${didSendDm ? 'They were also sent a DM' : 'I could not send them a DM'}`,
-				ephemeral: true
+			return interaction.editReply({
+				content: `Successfully banned <@${userId}>. ${didSendDm ? 'They were also sent a DM' : 'I could not send them a DM'}`
 			});
 		} catch (error) {
 			this.container.logger.error(error);
-			return interaction.reply({ content: 'An error occurred while banning the user, please ban them yourself', ephemeral: true });
+			return interaction.editReply({ content: 'An error occurred while banning the user, please ban them yourself' });
 		}
 	}
 }
