@@ -31,13 +31,13 @@ export class MessageUpdateListener extends Listener {
 					{
 						name: 'Old Message',
 						value: codeBlock(
-							oldMessage.content || 'This message had no content to display, maybe it was a join message or only had an attachment'
+							oldMessage.cleanContent || 'This message had no content to display, maybe it was a join message or only had an attachment'
 						)
 					},
 					{
 						name: 'New Message',
 						value: codeBlock(
-							newMessage.content || 'This message had no content to display, maybe it was a join message or only had an attachment'
+							newMessage.cleanContent || 'This message had no content to display, maybe it was a join message or only had an attachment'
 						)
 					}
 				);

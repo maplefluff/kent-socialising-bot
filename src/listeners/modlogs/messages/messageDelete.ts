@@ -38,7 +38,7 @@ export class MessageDeleteListener extends Listener {
 				})
 				.setTitle(`Message Deleted from <#${message.channel.id}>`)
 				.setDescription(
-					codeBlock(message.content || 'This message had no content to display, maybe it was a join message or only had an attachment')
+					codeBlock(message.cleanContent || 'This message had no content to display, maybe it was a join message or only had an attachment')
 				)
 				.setFooter({
 					text: `Deleted by: ${memberWhoDeleted.username}`,
