@@ -786,14 +786,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
-  version: 20.5.1
-  resolution: "@types/node@npm:20.5.1"
-  checksum: 3dbe611cd67afa987102c8558ee70f848949c5dcfee5f60abc073e55c0d7b048e391bf06bb1e0dc052cb7210ca97136ac496cbaf6e89123c989de6bd125fde82
+"@types/node@npm:*, @types/node@npm:^20.9.3":
+  version: 20.9.3
+  resolution: "@types/node@npm:20.9.3"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: 0cfbfd2a8bd18acc75aa4d7685c7dcf56344f48addd4041d306dc194f3132f8014d56fd49fcb26bcdf400b883f9527e5e2beaf52dfce029cef15c69b8ed2e72a
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.11.9, @types/node@npm:^18.18.11":
+"@types/node@npm:^18.11.9":
   version: 18.18.11
   resolution: "@types/node@npm:18.18.11"
   dependencies:
@@ -2836,7 +2838,7 @@ __metadata:
     "@sapphire/utilities": ^3.13.0
     "@skyra/env-utilities": ^1.2.1
     "@types/eslint": ^8.44.7
-    "@types/node": ^18.18.11
+    "@types/node": ^20.9.3
     "@types/ws": ^8.5.10
     "@typescript-eslint/eslint-plugin": ^6.12.0
     "@typescript-eslint/parser": ^6.12.0
