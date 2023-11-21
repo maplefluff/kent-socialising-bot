@@ -3,7 +3,7 @@
 
 __metadata:
   version: 8
-  cacheKey: 10
+  cacheKey: 10c0
 
 "@aashutoshrathi/word-wrap@npm:^1.2.3":
   version: 1.2.6
@@ -641,13 +641,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/plugin-subcommands@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "@sapphire/plugin-subcommands@npm:4.3.0"
+"@sapphire/plugin-subcommands@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@sapphire/plugin-subcommands@npm:5.1.0"
   dependencies:
     "@sapphire/utilities": "npm:^3.13.0"
     tslib: "npm:^2.6.2"
-  checksum: 8/dd93ad0b7da7723969edc99a17e407f7f5cc895e16deb7cd33d61e6ce04b284615a427711a4411a2a332d450a523ca16f94f8ea538fdd1a9622878dba442077b
+  checksum: bcade0b6c14d1b6c91ab5a9bffb90d6057fcbaf4c38c195f01d582df45060d03e3be8c7235699e70439b11fc771403a9fa828b03711799ce052c66abd556b849
   languageName: node
   linkType: hard
 
@@ -2831,7 +2831,7 @@ __metadata:
     "@sapphire/framework": "npm:^4.8.2"
     "@sapphire/plugin-hmr": "npm:^2.0.3"
     "@sapphire/plugin-logger": "npm:^3.0.7"
-    "@sapphire/plugin-subcommands": "npm:^4.3.0"
+    "@sapphire/plugin-subcommands": "npm:^5.1.0"
     "@sapphire/plugin-utilities-store": "npm:^1.0.3"
     "@sapphire/prettier-config": "npm:^2.0.0"
     "@sapphire/ts-config": "npm:^5.0.0"
@@ -3897,7 +3897,7 @@ __metadata:
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: b775dffbad4d4ed3ae498a37d33a96282d64de50955f7642258aeaa2886e419598f4dfe837c0e31bcc6eb448287c1578e899dffe49eca76ef393bf8605a3b543
+  checksum: 10/b775dffbad4d4ed3ae498a37d33a96282d64de50955f7642258aeaa2886e419598f4dfe837c0e31bcc6eb448287c1578e899dffe49eca76ef393bf8605a3b543
   languageName: node
   linkType: hard
 
@@ -4466,7 +4466,7 @@ __metadata:
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 1b45cdfb577a78ae7a9a9d0b77a7b772142cb98ba05e4e5aefba7044a028ded885bcecef63166407a5986645cea816fe4986894336aacd5e791796ea79a6a7ed
+  checksum: 10/1b45cdfb577a78ae7a9a9d0b77a7b772142cb98ba05e4e5aefba7044a028ded885bcecef63166407a5986645cea816fe4986894336aacd5e791796ea79a6a7ed
   languageName: node
   linkType: hard
 
