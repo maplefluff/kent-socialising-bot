@@ -10,8 +10,6 @@ export class GuildMemberRemoveListener extends Listener {
 	public async run(member: GuildMember) {
 		if (member.user.bot) return;
 
-		console.log('waiting 5 seconds');
-
 		await sleep(5000);
 		// this 5 second sleep is to allow the audit logs to update.
 		// It's easier to do it this way lol
@@ -77,8 +75,6 @@ export class GuildMemberRemoveListener extends Listener {
 	private async handleKick(member: GuildMember, data: GuildAuditLogsEntry) {
 		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
 
-		console.log(data);
-
 		const memberKickEmbed = new EmbedBuilder()
 			.setAuthor({
 				name: member.user.username,
@@ -112,8 +108,6 @@ export class GuildMemberRemoveListener extends Listener {
 
 	private async handleBan(member: GuildMember, data: GuildAuditLogsEntry) {
 		const threadChannel = await this.container.client.utilities.modlogUtilities.fetchThreadChannel('MEMBERS');
-
-		console.log(data);
 
 		const memberBanEmbed = new EmbedBuilder()
 			.setAuthor({
