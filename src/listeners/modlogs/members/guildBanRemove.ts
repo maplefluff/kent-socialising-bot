@@ -38,6 +38,8 @@ export class GuildBanRemoveListener extends Listener {
 						)
 				]
 			});
-		} catch (error) {}
+		} catch (error) {
+			return this.container.logger.error(error);
+		}
 	}
 }
