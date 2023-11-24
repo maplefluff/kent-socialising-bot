@@ -61,7 +61,8 @@
 		"dev": "npm run build && npm run start",
 		"watch:start": "tsc-watch -b src --onSuccess \"npm run start\"",
 		"format": "prettier --write \"src/**/*.ts\"",
-		"lint": "eslint src --ext ts --fix"
+		"lint": "eslint src --ext ts --fix",
+		"postinstall": "yarn prisma generate"
 	},
 	"commitlint": {
 		"extends": [
