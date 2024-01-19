@@ -641,13 +641,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/plugin-subcommands@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@sapphire/plugin-subcommands@npm:5.1.0"
+"@sapphire/plugin-subcommands@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "@sapphire/plugin-subcommands@npm:6.0.3"
   dependencies:
-    "@sapphire/utilities": "npm:^3.13.0"
+    "@sapphire/utilities": "npm:^3.15.3"
     tslib: "npm:^2.6.2"
-  checksum: bcade0b6c14d1b6c91ab5a9bffb90d6057fcbaf4c38c195f01d582df45060d03e3be8c7235699e70439b11fc771403a9fa828b03711799ce052c66abd556b849
+  checksum: fbff559ff9374ffe6a60f1fff156b2365661549420b24b44176cadc11ccef6f2648adc50d396b1fc66094a23c0af2f15c42b41d9035a8a196985b1804934b1b3
   languageName: node
   linkType: hard
 
@@ -724,10 +724,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/utilities@npm:^3.13.0":
-  version: 3.13.0
-  resolution: "@sapphire/utilities@npm:3.13.0"
-  checksum: cf34a7294ff31ff9049527880cf273d61c07131d41a8d8c211a99baae213a1aaab9c2774a2e934173582243f79f755afd17542996159d1b99309c91524d30b9d
+"@sapphire/utilities@npm:^3.13.0, @sapphire/utilities@npm:^3.15.3":
+  version: 3.15.3
+  resolution: "@sapphire/utilities@npm:3.15.3"
+  checksum: b1cb07f955b93f731b757f7f39fb9a9c9bc763bc5cddcd247e01beb5a4c7d38a6bb215d969b9aaf0891073333a63605861a219f5b5b457d73a2fd085c722f9c5
   languageName: node
   linkType: hard
 
@@ -2831,7 +2831,7 @@ __metadata:
     "@sapphire/framework": "npm:^4.8.2"
     "@sapphire/plugin-hmr": "npm:^2.0.3"
     "@sapphire/plugin-logger": "npm:^3.0.7"
-    "@sapphire/plugin-subcommands": "npm:^5.1.0"
+    "@sapphire/plugin-subcommands": "npm:^6.0.3"
     "@sapphire/plugin-utilities-store": "npm:^1.0.3"
     "@sapphire/prettier-config": "npm:^2.0.0"
     "@sapphire/ts-config": "npm:^5.0.0"
