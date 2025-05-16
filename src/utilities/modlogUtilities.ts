@@ -1,20 +1,25 @@
-import { Utility } from '@sapphire/plugin-utilities-store';
-import { envParseString } from '@skyra/env-utilities';
-import type { EmbedBuilder, ThreadChannel } from 'discord.js';
+import { Utility } from "@sapphire/plugin-utilities-store";
+import { envParseString } from "@skyra/env-utilities";
+import type { EmbedBuilder, ThreadChannel } from "discord.js";
 
 export class ModlogUtilities extends Utility {
-	public constructor(context: Utility.Context, options: Utility.Options) {
+	public constructor(context: Utility.LoaderContext, options: Utility.Options) {
 		super(context, {
 			...options,
-			name: 'modlogUtilities'
+			name: "modlogUtilities",
 		});
 	}
 
-	public async fetchThreadChannel(type: 'MESSAGES' | 'MEMBERS' | 'ROLES' | 'CHANNELS') {
-		const thread = await this.container.client.channels.fetch(envParseString(`MODLOG_${type}_THREAD_ID`));
-		if (!thread) throw new Error('Unable to fetch channels thread');
+	public async fetchThreadChannel(
+		type: "MESSAGES" | "MEMBERS" | "ROLES" | "CHANNELS",
+	) {
+		const thread = await this.container.client.channels.fetch(
+			envParseString(`MODLOG_${type}_THREAD_ID`),
+		);
+		if (!thread || !thread.isThread())
+			throw new Error("Unable to fetch channels thread");
 
-		return thread as ThreadChannel;
+		return thread as unknown as ThreadChannel;
 	}
 
 	public async sendDmToUser(userId: string, data: EmbedBuilder) {
@@ -30,7 +35,7 @@ export class ModlogUtilities extends Utility {
 	}
 }
 
-declare module '@sapphire/plugin-utilities-store' {
+declare module "@sapphire/plugin-utilities-store" {
 	export interface Utilities {
 		modlogUtilities: ModlogUtilities;
 	}

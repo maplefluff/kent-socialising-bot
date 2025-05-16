@@ -9,7 +9,8 @@
 			"#lib/*": ["lib/*"],
 			"#root/*": ["*"]
 		},
-		"experimentalDecorators": true
+		"experimentalDecorators": true,
+		"skipLibCheck": true
 	},
 	"include": ["."]
 }

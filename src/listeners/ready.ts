@@ -1,10 +1,18 @@
-import { ApplyOptions } from '@sapphire/decorators';
-import { Listener, Store } from '@sapphire/framework';
-import { envParseString } from '@skyra/env-utilities';
-import { blue, gray, green, magenta, magentaBright, white, yellow } from 'colorette';
-import { Time } from '@sapphire/duration';
+import { ApplyOptions } from "@sapphire/decorators";
+import { Time } from "@sapphire/duration";
+import { Listener, type Store } from "@sapphire/framework";
+import { envParseString } from "@skyra/env-utilities";
+import {
+	blue,
+	gray,
+	green,
+	magenta,
+	magentaBright,
+	white,
+	yellow,
+} from "colorette";
 
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== "production";
 
 @ApplyOptions<Listener.Options>({ once: true })
 export class UserEvent extends Listener {
@@ -14,29 +22,32 @@ export class UserEvent extends Listener {
 		this.printBanner();
 		this.printStoreDebugInformation();
 
-		setInterval(() => this.banRemover().catch((err) => this.container.logger.error(err)), Time.Minute * 5);
+		setInterval(
+			() => this.banRemover().catch((err) => this.container.logger.error(err)),
+			Time.Minute * 5,
+		);
 		// I'm aware that i could just put the Interval value myself, but since im using this package elsewhere, i may aswell do this to make it easier to read
 	}
 
 	private printBanner() {
-		const success = green('+');
+		const success = green("+");
 
 		const llc = dev ? magentaBright : white;
 		const blc = dev ? magenta : blue;
 
-		const line01 = llc('');
-		const line02 = llc('');
-		const line03 = llc('');
+		const line01 = llc("");
+		const line02 = llc("");
+		const line03 = llc("");
 
 		// Offset Pad
-		const pad = ' '.repeat(7);
+		const pad = " ".repeat(7);
 
 		console.log(
 			String.raw`
-${line01} ${pad}${blc('1.0.0')}
+${line01} ${pad}${blc("1.0.0")}
 ${line02} ${pad}[${success}] Gateway
-${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MODE')}` : ''}
-		`.trim()
+${line03}${dev ? ` ${pad}${blc("<")}${llc("/")}${blc(">")} ${llc("DEVELOPMENT MODE")}` : ""}
+		`.trim(),
 		);
 	}
 
@@ -50,19 +61,23 @@ ${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MO
 	}
 
 	private styleStore(store: Store<any>, last: boolean) {
-		return gray(`${last ? '└─' : '├─'} Loaded ${this.style(store.size.toString().padEnd(3, ' '))} ${store.name}.`);
+		return gray(
+			`${last ? "└─" : "├─"} Loaded ${this.style(store.size.toString().padEnd(3, " "))} ${store.name}.`,
+		);
 	}
 
 	private async banRemover() {
-		const guildData = this.container.client.guilds.cache.get(envParseString('GUILD_ID'));
-		if (!guildData) return this.container.logger.error('Failed to fetch guild');
+		const guildData = this.container.client.guilds.cache.get(
+			envParseString("GUILD_ID"),
+		);
+		if (!guildData) return this.container.logger.error("Failed to fetch guild");
 
 		const bans = await this.container.prisma.ban.findMany({
 			where: {
 				expiresAt: {
-					lte: new Date()
-				}
-			}
+					lte: new Date(),
+				},
+			},
 		});
 
 		for (const ban of bans) {
@@ -70,11 +85,11 @@ ${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MO
 			setTimeout(async () => {
 				await this.container.prisma.ban.delete({
 					where: {
-						id: ban.id
-					}
+						id: ban.id,
+					},
 				});
 
-				await guildData.members.unban(String(ban.userId), 'Ban timer expired');
+				await guildData.members.unban(String(ban.userId), "Ban timer expired");
 			}, Time.Second * 5);
 		}
 	}
