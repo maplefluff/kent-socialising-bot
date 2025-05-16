@@ -34,8 +34,8 @@
 		"pretty-quick": "^3.3.1"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^18.6.1",
-		"@commitlint/config-conventional": "^18.6.3",
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
 		"@sapphire/cli": "^1.9.3",
 		"@sapphire/eslint-config": "^5.0.6",
 		"@sapphire/prettier-config": "^2.0.0",
